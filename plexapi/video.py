@@ -29,6 +29,12 @@ class Video(PlexPartialObject):
             viewCount (int): Count of times this item was accessed.
     """
 
+    _include = ('?checkFiles=1&includeAllConcerts=1&includeBandwidths=1&includeChapters=1'
+                '&includeChildren=1&includeConcerts=1&includeExtras=1&includeFields=1'
+                '&includeGeolocation=1&includeLoudnessRamps=1&includeMarkers=1'
+                '&includeOnDeck=1&includePopularLeaves=1&includePreferences=1'
+                '&includeRelated=1&includeRelatedCount=1&includeReviews=1&includeStations=1')
+
     def _loadData(self, data):
         """ Load attribute values from Plex XML response. """
         self._data = data
@@ -286,9 +292,6 @@ class Movie(Playable, Video):
     TAG = 'Video'
     TYPE = 'movie'
     METADATA_TYPE = 'movie'
-    _include = ('?checkFiles=1&includeExtras=1&includeRelated=1'
-                '&includeOnDeck=1&includeChapters=1&includePopularLeaves=1'
-                '&includeConcerts=1&includePreferences=1')
 
     def _loadData(self, data):
         """ Load attribute values from Plex XML response. """
@@ -400,10 +403,6 @@ class Show(Video):
     TAG = 'Directory'
     TYPE = 'show'
     METADATA_TYPE = 'episode'
-
-    _include = ('?checkFiles=1&includeExtras=1&includeRelated=1'
-                '&includeOnDeck=1&includeChapters=1&includePopularLeaves=1'
-                '&includeMarkers=1&includeConcerts=1&includePreferences=1')
 
     def __iter__(self):
         for season in self.seasons():
@@ -707,9 +706,7 @@ class Episode(Playable, Video):
     TYPE = 'episode'
     METADATA_TYPE = 'episode'
 
-    _include = ('?checkFiles=1&includeExtras=1&includeRelated=1'
-                '&includeOnDeck=1&includeChapters=1&includePopularLeaves=1'
-                '&includeMarkers=1&includeConcerts=1&includePreferences=1')
+
 
     def _loadData(self, data):
         """ Load attribute values from Plex XML response. """
