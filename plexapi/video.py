@@ -706,8 +706,6 @@ class Episode(Playable, Video):
     TYPE = 'episode'
     METADATA_TYPE = 'episode'
 
-
-
     def _loadData(self, data):
         """ Load attribute values from Plex XML response. """
         Video._loadData(self, data)
